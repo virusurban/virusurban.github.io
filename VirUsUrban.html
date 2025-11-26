@@ -12,8 +12,36 @@
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
   <style>
+.total-amount::before {
+  content: "$";
+  margin-right: 3px;
+}
+
+.total-title {
+  font-weight: bold;
+}
+
+
+/* Quitar bordes de toda la tabla */
+.ticket-table, 
+.ticket-table * {
+  border: none !important;
+}
+
+/* Quitar líneas que Bootstrap agrega */
+.ticket-table {
+  --bs-table-border-color: transparent !important;
+  border-color: transparent !important;
+}
+
+
+
+
+
+
+
     body {
-      background-color: #f4f4f0;
+      background-color: #ffffff;
       font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     }
 
@@ -26,7 +54,7 @@
     }
 
     .ticket {
-      background-color: #fffdf6;
+      background-color: #ffffff;
       border: 2px solid #000;
       max-width: 480px;
       width: 100%;
@@ -39,7 +67,7 @@
       width: 110px;
       height: 110px;
       border-radius: 50%;
-      overflow: hidden;
+    
       margin: 0 auto 0.75rem;
       border: 3px solid #000;
     }
@@ -63,6 +91,7 @@
     /* Tabla tipo ticket */
     .ticket-table th,
     .ticket-table td {
+      font-family: "Rubik Spray Paint", cursive;
       border: 2px solid #000;
       padding: 0.4rem 0.5rem;
       vertical-align: middle;
@@ -89,7 +118,7 @@
     }
 
     tfoot th {
-      background: #f2f2f2;
+      background: #ffffff;
     }
 
     .btn-add-row {
@@ -106,32 +135,45 @@
     }
 
     /* Prefijo de moneda para la columna de precio y total */
-    .currency-prefix::before {
-      content: "$";
-      margin-right: 2px;
-    }
+
   </style>
 </head>
 <body>
   <div class="ticket-wrapper">
     <div class="ticket">
       <!-- Logo superior -->
-      <div class="ticket-logo">
-        <img
-          src="https://instagram.fgdl9-1.fna.fbcdn.net/v/t51.2885-19/580618980_17883258132406911_3502184486110829876_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fgdl9-1.fna.fbcdn.net&_nc_cat=103&_nc_oc=Q6cZ2QEkFlpK0D2lvFrMBKlaAX4vxS7gPkyw8bfcMQvjuHmitYEahMcK_Thy9sNIYoiCdVDnEO17GneFos-wjG6GilIx&_nc_ohc=RkTQh9FMg_4Q7kNvwFfUFs7&_nc_gid=Svh7nDMEj7mfvXNvoOlEkA&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_Afio29SZ9NeAmWruRBibwPM9rn6ZO1cQpftE9g0iqQNS3A&oe=692C7375&_nc_sid=7a9f4b"
-          alt="Vir~Us Urban logo">
+      <div class="ticket-log">
+        <h1 class="brand-name" id="trigger-add-row" style="font-size: 5rem; line-height: 1; cursor:pointer;">
+          V~U
+        </h1>
+        <script>
+          // Cuando se haga clic en el h1, activar botón "Agregar"
+          document.getElementById("trigger-add-row").addEventListener("click", function() {
+            document.getElementById("add-row").click();
+          });
+        </script>
+                
       </div>
 
       <!-- Nombre de la marca -->
-      <h1 class="brand-name">Vir~Us Urban</h1>
+       <!--<h1 class="brand-name">Vir~Us Urban</h1>-->
 
       <!-- Tabla de productos -->
+
+
+      
+
+
+
+
+
+
       <div class="table-responsive">
         <table class="table ticket-table mb-2">
           <thead>
             <tr>
               <th style="width: 50%;">Producto</th>
-              <th style="width: 20%;">Cantidad</th>
+              <th style="width: 10%;">Cantidad</th>
               <th style="width: 30%;">Precio</th>
             </tr>
           </thead>
@@ -168,16 +210,26 @@
           </tfoot>
         </table>
       </div>
-
       <!-- Botón agregar fila -->
-      <div class="d-flex justify-content-start mb-1">
-        <button type="button" id="add-row" class="btn btn-outline-dark btn-add-row">
-          Agregar
-        </button>
-      </div>
+      <button type="button" id="add-row" class="btn btn-outline-dark btn-add-row d-none">
+        Agregar
+      </button>
+      
 
       <!-- Mensaje final -->
-      <p class="ticket-message mb-0">Vir~Us Urban les desea felices fiestas</p>
+      <p class="ticket-message mb-0 festive-text">
+        Vir~Us Urban les desea felices fiestas
+      </p>
+      
+      <style>
+        .festive-text {
+          font-family: "Mountains of Christmas", cursive;
+          font-size: 1  rem;      /* Ajusta el tamaño */
+          letter-spacing: 2px;    /* Más festivo */
+          color: #000;         /* Rojo navideño opcional */
+        }
+      </style>
+      
     </div>
   </div>
 
